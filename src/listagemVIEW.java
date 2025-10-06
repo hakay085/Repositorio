@@ -17,8 +17,21 @@ public class listagemVIEW extends javax.swing.JFrame {
      * Creates new form listagemVIEW
      */
     public listagemVIEW() {
-        initComponents();
+        initComponents()
+    public ListagemVIEW() {
+    initComponents();
+    carregarProdutos(); // <- chama o método para preencher a tabela
+}
+
         listarProdutos();
+
+    private void initComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void carregarProdutos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     }
 
     /**
@@ -187,6 +200,19 @@ public class listagemVIEW extends javax.swing.JFrame {
             }
         });
     }
+public void carregarProdutos() {
+    // pega todos os produtos do banco
+    List<Produto> produtos = ProdutoDAO.listarTodos();
+
+    // pega o modelo da tabela e limpa as linhas existentes
+    DefaultTableModel model = (DefaultTableModel) tabelaProdutos.getModel();
+    model.setRowCount(0);
+
+    // adiciona cada produto na tabela
+    for (Produto p : produtos) {
+        model.addRow(new Object[]{p.getId(), p.getNome(), p.getPreco()});
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVendas;
